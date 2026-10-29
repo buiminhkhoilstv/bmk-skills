@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Local AI Video Editor Job",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "job_id",
+    "project_id",
+    "source_path",
+    "operation",
+    "state"
+  ],
+  "properties": {
+    "job_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sequence_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operation": {
+      "enum": [
+        "transcribe",
+        "scene_detect",
+        "silence_detect",
+        "rough_cut_suggest",
+        "export"
+      ]
+    },
+    "state": {
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "REVIEW_REQUIRED",
+        "APPROVED",
+        "EXPORTED",
+        "FAILED",
+        "CANCELLED"
+      ]
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-fA-F0-9]{64}$"
+    },
+    "reviewer": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "approved_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  }
+}
